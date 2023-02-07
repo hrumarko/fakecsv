@@ -1,0 +1,64 @@
+{% extends 'fakecsv/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container d-flex">
+  <h1>Sample schema</h1>
+  <a class="p-3" href="{% url 'edit-schema' pk %}">Edit sheme</a>
+</div>
+<div class="container w-25">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Column name</th>
+        <th scope="col">Column type</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for col in cols %}
+      <tr>
+        <td>{{ col.column_name }}</td>
+        <td>{{ col.type }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div class="container d-flex justify-content-between">
+  <h1>Data sets</h1>
+  <div class="cnt-wor d-flex">
+
+    <p>Rows</p>
+    <input class="w-25 h-75 rows" type="number" name="rows" value="">
+    <button class="btn btn-success gen-data" value="{{pk}}" type="">Generate data</button>
+  </div>
+</div>
+<div class="container w-25">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Created</th>
+        <th scope="col">Status</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody class='files-table' id={{schema}}>
+      <tr class='files-maket hide' id=''>
+        <td class='created'></td>
+        <td class='status'>Processing</td>
+        <td class='download hide'><a class='download-link' href="{{ file.file.url}}">Download</a></td>
+      </tr>
+      {% for file in files %}
+      <tr class='files' id={{file.title}}>
+        <td class='created'>{{ file.date|date:"d-m-Y" }}</td>
+        <td class='status'>Processing</td>
+        <td class='download hide'><a href="{{ file.file.url}}">Download</a></td>
+        <!-- <td class='processing hide'>Processing</td> -->
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<script src="{% static 'js/datasets.js' %}"></script>
+
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends 'fakecsv/base.html' %}
+
+
+{% block content %}
+<h1>Data schemas</h1>
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Modified</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in schemas %}
+      <tr>
+        <td><a href="{% url 'data-sets' i.pk %}">{{i.name}}</a></td>
+        <td>{{i.date|date:"d-m-Y" }}</td>
+        <td>
+          <a href="{% url 'edit-schema' i.pk %}">Edit scheme</a> |
+          <a href="{% url 'delete-schema' i.pk %}">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+
+  </table>
+</div>
+
+{% endblock content %}

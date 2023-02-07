@@ -1,0 +1,43 @@
+body {
+  
+}
+
+.col-3.from-to, .body-from-to{
+  
+  display: flex;
+}
+
+.from-int{
+  width: 45%;
+}
+
+.to-int {
+  width:45%;
+}
+
+.body-from-to.hide {
+  display: none;
+}
+
+.add-column {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #d4d4d4;
+}
+
+.new-schema {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hide {
+  display:none
+}
+
+#id_name, #id_column_separator, #id_string_character{
+  width: 350px;
+}
+
+.form-login {
+  text-align: center;
+}
